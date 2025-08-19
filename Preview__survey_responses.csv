@@ -1,0 +1,21 @@
+respondent_id,survey_date,consent,stratum,psu,selection_prob,base_weight,post_strat_factor,final_weight,urban_rural,gender,age,marital_status,education,employment_status,owns_vehicle,vehicle_count,children_count,smokes,alcohol_frequency,height_cm,weight_kg,bmi,income_monthly,expenditure_monthly,pregnant
+R100000,2025-01-30,No,South,1123,0.184295,5.426,0.925,5.018,Rural,Female,34,Married,Below Secondary,Student,Yes,2,2,No,Never,169.8,63.0,21.85,nan,8827.0,No
+R100001,2024-01-12,Yes,Central,1050,0.064681,15.461,0.96,14.836,Rural,Male,42,Married,Postgraduate,Unemployed,Yes,1,0,Yes,Monthly,173.5,59.1,19.63,26759.0,13116.0,No
+R100002,2024-03-08,Yes,West,1012,0.123974,8.066,1.143,9.221,Urban,Male,37,Married,Graduate,Employed,No,0,1,Yes,Never,174.5,68.8,22.59,153780.0,153583.0,No
+R100003,2025-05-03,Yes,East,1065,0.049792,20.083,0.804,16.139,Rural,Female,30,Married,Secondary,Employed,No,0,2,No,Monthly,173.5,58.7,19.5,25136.0,nan,No
+R100004,2025-05-03,Yes,North,1054,0.026098,38.317,1.035,39.672,Urban,Female,15,Single,Postgraduate,Homemaker,Yes,1,0,Yes,Not Asked,178.6,70.6,22.13,43133.0,44098.0,No
+R100005,2024-07-09,Yes,North,1108,0.076065,13.147,1.039,13.666,Rural,Male,33,Single,Secondary,Unemployed,Yes,1,0,No,Monthly,175.1,59.7,19.47,58357.0,61653.0,No
+R100006,2024-02-20,Yes,North,1005,0.160489,6.231,0.959,5.973,Urban,Male,73,Married,Graduate,nan,Yes,3,1,Yes,Never,-999,75.8,26.01,26422.0,11561.0,No
+R100007,2025-02-11,Yes,Central,1094,0.069966,14.293,0.895,12.789,Rural,Female,19,Single,Postgraduate,Employed,Yes,2,1,No,Never,154.7,62.7,26.2,22522.0,16907.0,No
+R100008,2024-07-27,Yes,West,1094,0.059617,16.774,0.894,14.993,Urban,Male,15,Single,Secondary,Unemployed,No,0,0,No,Not Asked,154.7,84.4,35.27,41753.0,27660.0,No
+R100009,2024-01-27,Yes,West,1123,0.058283,17.158,1.153,19.791,Urban,Female,57,Married,Graduate,Employed,Yes,3,3,No,Never,162.8,76.1,28.71,25338.0,21236.0,No
+R100010,2024-04-01,Yes,North,1057,0.112731,8.871,0.977,8.665,Urban,Female,43,Married,nan,Employed,Yes,1,2,Yes,Monthly,165.4,69.7,25.48,23781.0,,No
+R100011,2024-03-20,Yes,Central,1017,0.195597,5.113,0.932,4.767,Urban,Other,36,Married,Secondary,Employed,Yes,1,0,Yes,Never,177.6,64.1,20.32,,34546.0,No
+R100012,2024-12-06,Yes,Central,1112,0.102618,9.745,0.98,9.545,Rural,Male,50,Married,Below Secondary,Employed,Yes,1,2,No,Never,140.0,45.7,23.32,28577.0,22569.0,No
+R100013,2025-06-03,Yes,South,1047,0.120315,8.312,1.068,8.875,Urban,Female,24,Married,Secondary,Employed,No,0,1,No,Weekly,155.7,86.8,35.8,70138.0,nan,No
+R100014,2025-04-03,Yes,North,1023,0.174914,5.717,0.858,4.907,Urban,Female,33,Married,Graduate,Employed,No,0,1,No,-999,25.0,57.5,920.0,28130.0,13899.0,No
+R100015,2024-11-11,Yes,North,1079,0.116313,8.598,0.98,8.424,Urban,Male,45,Married,Postgraduate,Student,Yes,2,1,Yes,Weekly,156.0,68.3,28.07,11931.0,11571.0,No
+R100016,2024-09-01,Yes,South,1101,0.053203,18.796,1.035,19.457,Urban,Male,59,Married,Graduate,Homemaker,No,0,1,No,Weekly,157.8,71.8,28.83,2727.0,2248.0,No
+R100017,2024-12-23,Yes,East,1085,0.073927,13.527,1.179,15.954,Rural,Female,20,Single,Postgraduate,Employed,Yes,1,0,No,Never,160.5,64.4,25.0,8285.0,8821.0,No
+R100018,2024-09-13,Yes,East,1014,0.075789,13.195,0.901,11.888,Rural,Male,49,Married,Graduate,Employed,Yes,1,1,No,Never,156.5,86.0,35.11,9347.0,5960.0,No
+R100019,2024-05-22,Yes,South,1066,0.091517,10.927,0.944,10.312,Urban,Male,39,Married,Secondary,Employed,Yes,2,0,Yes,Monthly,158.0,49.9,19.99,36154.0,-999,No

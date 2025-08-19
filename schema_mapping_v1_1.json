@@ -1,0 +1,452 @@
+{
+  "version": "1.1",
+  "description": "Schema + cleaning + validation + reporting config for the survey pipeline",
+  "missing_codes": [
+    "NA",
+    "",
+    -999
+  ],
+  "canonical_fields": [
+    {
+      "name": "respondent_id",
+      "type": "string"
+    },
+    {
+      "name": "survey_date",
+      "type": "date"
+    },
+    {
+      "name": "consent",
+      "type": "categorical",
+      "values": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "name": "stratum",
+      "type": "categorical",
+      "values": [
+        "North",
+        "South",
+        "East",
+        "West",
+        "Central"
+      ]
+    },
+    {
+      "name": "psu",
+      "type": "integer"
+    },
+    {
+      "name": "selection_prob",
+      "type": "float"
+    },
+    {
+      "name": "base_weight",
+      "type": "float"
+    },
+    {
+      "name": "post_strat_factor",
+      "type": "float"
+    },
+    {
+      "name": "final_weight",
+      "type": "float"
+    },
+    {
+      "name": "urban_rural",
+      "type": "categorical",
+      "values": [
+        "Urban",
+        "Rural"
+      ]
+    },
+    {
+      "name": "gender",
+      "type": "categorical",
+      "values": [
+        "Male",
+        "Female",
+        "Other"
+      ]
+    },
+    {
+      "name": "age",
+      "type": "integer"
+    },
+    {
+      "name": "marital_status",
+      "type": "categorical",
+      "values": [
+        "Single",
+        "Married",
+        "Divorced",
+        "Widowed"
+      ]
+    },
+    {
+      "name": "education",
+      "type": "categorical",
+      "values": [
+        "Below Secondary",
+        "Secondary",
+        "Graduate",
+        "Postgraduate"
+      ]
+    },
+    {
+      "name": "employment_status",
+      "type": "categorical",
+      "values": [
+        "Employed",
+        "Unemployed",
+        "Student",
+        "Homemaker",
+        "Retired"
+      ]
+    },
+    {
+      "name": "owns_vehicle",
+      "type": "categorical",
+      "values": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "name": "vehicle_count",
+      "type": "integer"
+    },
+    {
+      "name": "children_count",
+      "type": "integer"
+    },
+    {
+      "name": "smokes",
+      "type": "categorical",
+      "values": [
+        "Yes",
+        "No"
+      ]
+    },
+    {
+      "name": "alcohol_frequency",
+      "type": "categorical",
+      "values": [
+        "Never",
+        "Monthly",
+        "Weekly",
+        "Daily",
+        "Not Asked"
+      ]
+    },
+    {
+      "name": "height_cm",
+      "type": "float"
+    },
+    {
+      "name": "weight_kg",
+      "type": "float"
+    },
+    {
+      "name": "bmi",
+      "type": "float"
+    },
+    {
+      "name": "income_monthly",
+      "type": "float"
+    },
+    {
+      "name": "expenditure_monthly",
+      "type": "float"
+    },
+    {
+      "name": "pregnant",
+      "type": "categorical",
+      "values": [
+        "Yes",
+        "No"
+      ]
+    }
+  ],
+  "mapping_examples": [
+    {
+      "raw": "veh_count",
+      "canonical": "vehicle_count"
+    },
+    {
+      "raw": "educ",
+      "canonical": "education"
+    },
+    {
+      "raw": "inc",
+      "canonical": "income_monthly"
+    }
+  ],
+  "weights": {
+    "final": "final_weight",
+    "base": "base_weight",
+    "stratum": "stratum",
+    "cluster": "psu"
+  },
+  "type_coercion": {
+    "numeric": [
+      "height_cm",
+      "weight_kg",
+      "bmi",
+      "income_monthly",
+      "expenditure_monthly",
+      "age",
+      "vehicle_count",
+      "children_count",
+      "selection_prob",
+      "base_weight",
+      "post_strat_factor",
+      "final_weight",
+      "psu"
+    ],
+    "categorical": {
+      "gender": [
+        "Male",
+        "Female",
+        "Other"
+      ],
+      "consent": [
+        "Yes",
+        "No"
+      ],
+      "urban_rural": [
+        "Urban",
+        "Rural"
+      ],
+      "marital_status": [
+        "Single",
+        "Married",
+        "Divorced",
+        "Widowed"
+      ],
+      "education": [
+        "Below Secondary",
+        "Secondary",
+        "Graduate",
+        "Postgraduate"
+      ],
+      "employment_status": [
+        "Employed",
+        "Unemployed",
+        "Student",
+        "Homemaker",
+        "Retired"
+      ],
+      "owns_vehicle": [
+        "Yes",
+        "No"
+      ],
+      "smokes": [
+        "Yes",
+        "No"
+      ],
+      "alcohol_frequency": [
+        "Never",
+        "Monthly",
+        "Weekly",
+        "Daily",
+        "Not Asked"
+      ],
+      "pregnant": [
+        "Yes",
+        "No"
+      ]
+    }
+  },
+  "imputation_config": {
+    "strategy": "per-field",
+    "fields": {
+      "height_cm": "mean",
+      "weight_kg": "mean",
+      "income_monthly": "median",
+      "expenditure_monthly": "median",
+      "children_count": "knn"
+    },
+    "knn": {
+      "k": 5,
+      "metric": "euclidean",
+      "features": [
+        "age",
+        "gender",
+        "marital_status",
+        "education",
+        "employment_status",
+        "urban_rural",
+        "owns_vehicle",
+        "vehicle_count",
+        "children_count"
+      ]
+    }
+  },
+  "outlier_detection": {
+    "iqr_fields": [
+      "height_cm",
+      "weight_kg",
+      "income_monthly",
+      "expenditure_monthly"
+    ],
+    "zscore_fields": [
+      "bmi"
+    ]
+  },
+  "outlier_capping": {
+    "clip_bounds": {
+      "height_cm": [
+        120,
+        220
+      ],
+      "weight_kg": [
+        30,
+        180
+      ]
+    },
+    "winsorize_quantiles": {
+      "income_monthly": [
+        0.01,
+        0.99
+      ],
+      "expenditure_monthly": [
+        0.01,
+        0.99
+      ]
+    }
+  },
+  "validation_rules": [
+    {
+      "id": "R1",
+      "if": "owns_vehicle == 'No'",
+      "then": "vehicle_count == 0",
+      "severity": "error",
+      "action": {
+        "type": "set",
+        "field": "vehicle_count",
+        "value": 0
+      }
+    },
+    {
+      "id": "R2",
+      "if": "marital_status == 'Single'",
+      "then": "children_count == 0",
+      "severity": "warn",
+      "action": {
+        "type": "set_if_configured",
+        "field": "children_count",
+        "value": 0
+      }
+    },
+    {
+      "id": "R3",
+      "if": "gender != 'Female'",
+      "then": "pregnant in ['No', None, 'NA', -999, '']",
+      "severity": "error",
+      "action": {
+        "type": "set",
+        "field": "pregnant",
+        "value": null
+      }
+    },
+    {
+      "id": "R4",
+      "if": "age < 18",
+      "then": "alcohol_frequency in ['Never','Not Asked', None, 'NA', -999, '']",
+      "severity": "error",
+      "action": {
+        "type": "set_if_invalid",
+        "field": "alcohol_frequency",
+        "value": "Not Asked"
+      }
+    }
+  ],
+  "skip_patterns": [
+    {
+      "when": "age < 18",
+      "fields": [
+        "alcohol_frequency"
+      ],
+      "action": "set_to",
+      "value": "Not Asked"
+    },
+    {
+      "when": "employment_status in ['Student','Unemployed']",
+      "fields": [
+        "income_monthly"
+      ],
+      "action": "allow_missing"
+    }
+  ],
+  "post_clean_derive": [
+    {
+      "field": "bmi",
+      "formula": "weight_kg / ( (height_cm/100) ** 2 )",
+      "round": 2
+    }
+  ],
+  "report_templates": [
+    {
+      "name": "quick_summary",
+      "metrics": [
+        "n",
+        "weighted_mean(income_monthly)",
+        "median(expenditure_monthly)",
+        "prop(gender)",
+        "moe(prop(smokes))"
+      ],
+      "weight": "final_weight"
+    },
+    {
+      "name": "quality_scorecard",
+      "sections": [
+        "missingness_by_column",
+        "imputation_counts_by_field",
+        "rule_violations_table",
+        "outlier_summary",
+        "before_after_plots"
+      ]
+    }
+  ],
+  "chart_specs": {
+    "before_after_hist": [
+      "height_cm",
+      "weight_kg",
+      "income_monthly",
+      "expenditure_monthly",
+      "bmi"
+    ],
+    "before_after_box": [
+      "income_monthly",
+      "expenditure_monthly"
+    ],
+    "missingness_bar": true,
+    "correlation_heatmap": [
+      "income_monthly",
+      "expenditure_monthly",
+      "age",
+      "vehicle_count",
+      "children_count",
+      "height_cm",
+      "weight_kg",
+      "bmi"
+    ]
+  },
+  "ui": {
+    "tooltips": {
+      "winsorize": "Reduce the impact of extreme values by capping them at chosen bounds/quantiles.",
+      "iqr": "Flag values outside [Q1-1.5*IQR, Q3+1.5*IQR] as potential outliers.",
+      "zscore": "Flag values with large standardized distance from the mean.",
+      "weights": "Use final_weight for design-corrected estimates; MOEs require effective n or design-based variance.",
+      "skip_patterns": "Questions conditionally skipped based on respondent attributes (e.g., age).",
+      "imputation": "Fill missing values using mean/median for numeric and KNN for selected discrete fields."
+    },
+    "error_checks": {
+      "halt_on_error_rules": true,
+      "drop_rows_if": []
+    }
+  }
+}
